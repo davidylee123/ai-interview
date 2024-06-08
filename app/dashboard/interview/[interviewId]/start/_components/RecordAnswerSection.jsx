@@ -1,6 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Image, Mic, MicOff } from "lucide-react";
+import { Mic, MicOff } from "lucide-react";
+import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";

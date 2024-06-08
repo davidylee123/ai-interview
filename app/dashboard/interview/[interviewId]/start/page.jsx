@@ -57,7 +57,7 @@ function StartInterview({ params }) {
           </Button>
         )}
         {activeQuestionIndex == mockInterviewQuestion?.length - 1 && (
-          <Button>End Interview</Button>
+          <Button variant="ghost">Your Interview is Complete</Button>
         )}
       </div>
     </div>
