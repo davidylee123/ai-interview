@@ -25,6 +25,14 @@ function RecordAnswerSection() {
     });
   }, [results]);
 
+  const SaveUserAnswer = () => {
+    if (isRecording) {
+      stopSpeechToText();
+    } else {
+      startSpeechToText();
+    }
+  };
+
   return (
     <div className="flex items-center justify-center flex-col">
       <div className="flex flex-col mt-20 justify-center items-center bg-black rounded-lg p-5">
