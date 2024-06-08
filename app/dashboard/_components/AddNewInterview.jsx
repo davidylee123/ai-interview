@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import {
   Dialog,
@@ -6,7 +7,6 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -22,13 +22,14 @@ import { useRouter } from "next/navigation";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
-  const [jobPosition, setJobPosition] = useState();
-  const [jobDesc, setJobDesc] = useState();
-  const [jobExperience, setJobExperience] = useState();
+  const [jobPosition, setJobPosition] = useState("");
+  const [jobDesc, setJobDesc] = useState("");
+  const [jobExperience, setJobExperience] = useState("");
   const [loading, setLoading] = useState(false);
   const [jsonResponse, setJsonResponse] = useState([]);
   const router = useRouter();
   const { user } = useUser();
+
   const onSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
@@ -79,12 +80,12 @@ function AddNewInterview() {
   };
 
   return (
-    <div>
+    <div className="flex justify-center items-center w-full">
       <div
-        className="p-10 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all"
+        className="p-12 border rounded-lg bg-white text-blue-600 text-2xl hover:scale-105 hover:shadow-xl cursor-pointer transition-all"
         onClick={() => setOpenDialog(true)}
       >
-        <h2 className="text-lg text-center">+ Add New</h2>
+        <h2 className="text-lg text-center">Get Started!</h2>
       </div>
       <Dialog open={openDialog}>
         <DialogContent className="max-w-2xl">

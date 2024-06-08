@@ -11,6 +11,7 @@ import Link from "next/link";
 function Interview({ params }) {
   const [interviewData, setInterviewData] = useState();
   const [webCamEnabled, setWebCamEnabled] = useState(false);
+
   useEffect(() => {
     console.log(params.interviewId);
     GetInterviewDetails();
@@ -41,7 +42,7 @@ function Interview({ params }) {
               {interviewData.jobPosition}
             </h2>
             <h2 className="text-lg">
-              <strong>Job Desciption/Tech Stack: </strong>
+              <strong>Job Description/Tech Stack: </strong>
               {interviewData.jobDesc}
             </h2>
             <h2 className="text-lg">
@@ -59,23 +60,28 @@ function Interview({ params }) {
             </h2>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col items-center">
           {webCamEnabled ? (
             <Webcam
               onUserMedia={() => setWebCamEnabled(true)}
               onUserMediaError={() => setWebCamEnabled(false)}
               mirrored={true}
               style={{
-                height: 300,
-                width: 300,
+                height: "90%",
+                width: "90%",
               }}
             />
           ) : (
             <>
-              <WebcamIcon className="h-72 w-full my-7 p-20 bg-secondary rounded-lg border" />
+              <WebcamIcon
+                style={{
+                  height: "70%",
+                  width: "70%",
+                }}
+              />
               <Button
                 variant="ghost"
-                className="w-full"
+                className="w-full mt-4"
                 onClick={() => setWebCamEnabled(true)}
               >
                 Enable WebCam and Microphone

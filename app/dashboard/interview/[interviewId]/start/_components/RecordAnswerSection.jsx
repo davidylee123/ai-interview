@@ -1,12 +1,13 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Image, Mic } from "lucide-react";
+import { Image, Mic, MicOff } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 
 function RecordAnswerSection() {
   const [userAnswer, setUserAnswer] = useState("");
+  const [showAnswer, setShowAnswer] = useState(false);
   const {
     error,
     interimResult,
@@ -20,17 +21,12 @@ function RecordAnswerSection() {
   });
 
   useEffect(() => {
-    results.map((result) => {
-      setUserAnswer((prevAns) => prevAns + result?.transcript);
-    });
+    const finalAnswer = results.map((result) => result?.transcript).join(" ");
+    setUserAnswer(finalAnswer);
   }, [results]);
 
-  const SaveUserAnswer = () => {
-    if (isRecording) {
-      stopSpeechToText();
-    } else {
-      startSpeechToText();
-    }
+  const toggleShowAnswer = () => {
+    setShowAnswer(!showAnswer);
   };
 
   return (
@@ -45,28 +41,43 @@ function RecordAnswerSection() {
         <Webcam
           mirrored={true}
           style={{
-            height: 300,
+            height: 350,
             width: "100%",
             zIndex: 10,
           }}
         />
       </div>
-      <Button
-        variant="outline"
-        className="my-10"
-        onClick={isRecording ? stopSpeechToText : startSpeechToText}
-      >
-        {isRecording ? (
-          <h2 className="text-red-600 flex gap-2">
-            <Mic />
-            Stop Recording
-          </h2>
-        ) : (
-          "Record Answer"
-        )}
-      </Button>
-
-      <Button onClick={() => console.log(userAnswer)}>Show User Answer</Button>
+      <div className="flex flex-col gap-4 my-10">
+        <Button
+          variant="outline"
+          className="rounded-full flex items-center justify-center px-6 py-3"
+          onClick={isRecording ? stopSpeechToText : startSpeechToText}
+        >
+          {isRecording ? (
+            <span className="text-red-600 flex items-center gap-2">
+              <Mic />
+              Stop Recording
+            </span>
+          ) : (
+            <span className="flex items-center gap-2">
+              <MicOff />
+              Record Answer
+            </span>
+          )}
+        </Button>
+        <Button
+          className="rounded-full flex items-center justify-center px-6 py-3"
+          onClick={toggleShowAnswer}
+        >
+          Show Answer
+        </Button>
+      </div>
+      {showAnswer && (
+        <div className="my-5 p-3 bg-gray-100 rounded-lg w-full max-w-md">
+          <h2 className="text-lg font-bold">Your Answer:</h2>
+          <p>{userAnswer}</p>
+        </div>
+      )}
     </div>
   );
 }

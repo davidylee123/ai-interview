@@ -29,9 +29,11 @@ export default function Page() {
               </svg>
             </a>
             <h1 className="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-              Welcome: AI Interview
+              Welcome to AI Interview
             </h1>
-            <SignIn />
+            <div className="mt-6">
+              <SignIn />
+            </div>
           </div>
         </main>
       </div>
