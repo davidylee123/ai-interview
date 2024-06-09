@@ -7,6 +7,7 @@ import { Lightbulb, WebcamIcon } from "lucide-react";
 import Webcam from "react-webcam";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { Briefcase, Code, Calendar, Info } from "lucide-react";
 
 function Interview({ params }) {
   const [interviewData, setInterviewData] = useState();
@@ -33,22 +34,42 @@ function Interview({ params }) {
 
   return (
     <div className="my-10">
-      <h2 className="font-bold text-2xl">Let's Get Started</h2>
+      <div className="flex items-center gap-2">
+        <Info className="w-6 h-6 text-blue-600" />
+        <h2 className="font-bold text-2xl">
+          Review The Information Before You Start
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="flex flex-col my-5 gap-5 ">
-          <div className="flex flex-col p-5 rounded-lg border gap-5">
-            <h2 className="text-lg">
-              <strong>Job Role/Job Position: </strong>
-              {interviewData.jobPosition}
-            </h2>
-            <h2 className="text-lg">
-              <strong>Job Description/Tech Stack: </strong>
-              {interviewData.jobDesc}
-            </h2>
-            <h2 className="text-lg">
-              <strong>Years of Experience: </strong>
-              {interviewData.jobExperience}
-            </h2>
+          <div className="flex flex-col p-6 rounded-lg border shadow-md bg-gradient-to-r from-blue-50 to-indigo-50 space-y-4">
+            <div className="flex items-center space-x-2">
+              <Briefcase className="w-5 h-5 text-blue-600" />
+              <h2 className="text-lg font-semibold text-gray-700">
+                Job Title:
+              </h2>
+              <span className="text-lg font-normal text-gray-900">
+                {interviewData.jobPosition}
+              </span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Code className="w-5 h-5 text-green-600" />
+              <h2 className="text-lg font-semibold text-gray-700">
+                Job Skills:
+              </h2>
+              <span className="text-lg font-normal text-gray-900">
+                {interviewData.jobDesc}
+              </span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Calendar className="w-5 h-5 text-purple-600" />
+              <h2 className="text-lg font-semibold text-gray-700">
+                Years of Experience:
+              </h2>
+              <span className="text-lg font-normal text-gray-900">
+                {interviewData.jobExperience}
+              </span>
+            </div>
           </div>
           <div className="p-5 border rounded-lg border-yellow-300 bg-yellow-200">
             <h2 className="flex gap-2 items-center text-yellow-600">

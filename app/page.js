@@ -13,7 +13,7 @@ export default function Home() {
             AI Mock Interview
           </h1>
           <p className="text-lg lg:text-xl font-normal text-gray-500 mb-8 dark:text-gray-400">
-            Practice your interview from my AI-powered interview project!
+            Practice your interview with my AI-powered interview project!
           </p>
           <div className="flex flex-col lg:flex-row justify-center space-y-4 lg:space-y-0 lg:space-x-4">
             <a

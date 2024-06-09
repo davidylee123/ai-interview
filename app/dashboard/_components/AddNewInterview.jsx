@@ -19,7 +19,6 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment/moment";
 import { useRouter } from "next/navigation";
-import { DialogTrigger } from "@radix-ui/react-dialog";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -88,39 +87,39 @@ function AddNewInterview() {
       >
         <h2 className="text-lg text-center">Get Started!</h2>
       </div>
-      <Dialog open={openDialog}>
+      <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
             <DialogTitle className="text-2xl">
-              Tell us more about your job interview
+              Add Details About Your Job Interview
             </DialogTitle>
             <DialogDescription>
               <form onSubmit={onSubmit}>
                 <div>
                   <h2>
-                    Add Details about your job position/role, Job description
-                    and years of experience
+                    Add details about your Job Title, Job Skills, and Years of
+                    Experience
                   </h2>
-                  <div className="mt-7 my-3">
-                    <label>Job Role/Job Position</label>
+                  <div className="mt-7 my-4">
+                    <label>Job Title</label>
                     <Input
-                      placeholder="Ex. Full Stack Developer"
+                      placeholder="Ex: Software Engineer"
                       required
                       onChange={(event) => setJobPosition(event.target.value)}
                     />
                   </div>
-                  <div className="my-3">
-                    <label>Job Description/Tech Stack</label>
+                  <div className="my-4">
+                    <label>Job Skills</label>
                     <Textarea
-                      placeholder="Ex. React, Angular, Node"
+                      placeholder="Ex: Java, Python, JavaScript, React.js"
                       required
                       onChange={(event) => setJobDesc(event.target.value)}
                     />
                   </div>
-                  <div className="my-3">
+                  <div className="my-4">
                     <label>Years of Experience</label>
                     <Input
-                      placeholder="Ex.3"
+                      placeholder="Ex: 3"
                       type="number"
                       max="40"
                       required
